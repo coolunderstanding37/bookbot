@@ -1,9 +1,4 @@
-import os
-
 def main():
-    # Change to the directory where your script is located
-    script_dir = os.path.dirname(os.path.abspath(__file__))
-    os.chdir(script_dir)
     
     with open("books/frankenstein.txt") as f:
         file_contents = f.read()
