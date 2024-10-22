@@ -26,6 +26,16 @@ def main():
     total_char = char_count(file_contents)
     print("Character count: ")
     print(f"{total_char}")
+
+    # convert dictionary to list of dictionaries
+    char_list = [{"char": char, "num": count} for char, count in total_char.items()]
+    char_list.sort(reverse=True,key=sort_on)
+    for char_info in char_list:
+        char = char_info['char']
+        num = char_info['num']
+        # only alphabetical characters
+        if char.isalpha():
+            print(f"The '{char}' character was found {num} times")
        
 def count_words(text):
     words = text.split()
@@ -44,6 +54,11 @@ def char_count(text):
             char_dict[char] += 1
 
     return char_dict
+
+# a function that takes a dictionary and returns the value of the "num" key
+# this is how the '.sort()' mathod knows how to sort the list of dictionaries
+def sort_on(char_dict):
+    return char_dict["num"]
 
 if __name__ == "__main__":
     main()
