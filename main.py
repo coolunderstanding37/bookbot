@@ -1,8 +1,19 @@
+import os
+
 def main():
     
-    # retrieving the book file
-    with open("books/frankenstein.txt") as f:
-        file_contents = f.read()
+    # get directory where script is located
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+
+    # construct the path tot he book file
+    book_path = os.path.join(script_dir, "books", "frankenstein.txt")
+
+    # check if the file exists
+    if os.path.exists(book_path):
+        with open(book_path, 'r') as f:
+            file_contents = f.read()
+    else:
+        print(f"Error: The file {book_path} does not exist.")
     
     # counting words
     word_count = count_words(file_contents)
